@@ -7,8 +7,7 @@ const searchMovies = async (search: string): Promise<object> => {
         "method":"GET",
         "url":`http://www.omdbapi.com/?s=${search}&plot=full&apikey=${apiKey}`
     })
-    console.log(result)
-    return {}
+    return result
 }
 
 const getMovie = (title: string) => {
