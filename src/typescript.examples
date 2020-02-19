@@ -1,0 +1,198 @@
+/**
+ * Boolean #
+ * The most basic datatype is the simple true/false value, 
+ * which JavaScript and TypeScript call a boolean value.
+ */
+let isDone: boolean = false;
+//isDone = "unoTalks"
+
+/**
+ * Number #
+ * As in JavaScript, all numbers in TypeScript are floating point values. 
+ * These floating point numbers get the type number. In addition to 
+ * hexadecimal and decimal literals, TypeScript also supports 
+ * binary and octal literals introduced in ECMAScript 2015.
+ */
+let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;
+decimal = '12'
+
+
+
+
+
+
+/**
+ * String #
+ * Another fundamental part of creating programs in JavaScript for 
+ * webpages and servers alike is working with textual data. As in 
+ * other languages, we use the type string to refer to these 
+ * textual datatypes. Just like JavaScript, TypeScript also uses 
+ * double quotes (") or single quotes (') to surround string data.
+ */
+
+let color: string = "blue";
+color = 0xf00d;
+ 
+
+
+
+
+/**
+ * Array #
+ * TypeScript, like JavaScript, allows you to work with 
+ * arrays of values. Array types can be written in one of two ways. 
+ * In the first, you use the type of the elements followed by [] to 
+ * denote an array of that element type:
+*/
+let list: number[] = [1, 2, 3];
+// The second way uses a generic array type, Array<elemType>:
+let listSecond: Array<number> = [1, 2, 3];
+list = "unotalks"
+listSecond = "unotalks"
+
+
+
+
+
+/**
+ * Tuple #
+ * Tuple types allow you to express an array with a fixed 
+ * number of elements whose types are known, but need not 
+ * be the same. For example, you may want to represent a 
+ * value as a pair of a string and a number:
+*/
+// Declare a tuple type
+let x: [string, number];
+// Initialize it
+x = ["hello", 10]; // OK
+// Initialize it incorrectly
+x = [10, "hello"]; // Error
+/*
+When accessing an element with a known index, the correct 
+type is retrieved:
+*/
+console.log(x[0].substring(1)); // OK
+console.log(x[1].substring(1)); // Error, 'number' does not have 'substring'
+/* 
+Accessing an element outside the set of known indices fails with an error:
+*/
+x[3] = "world"; // Error, Property '3' does not exist on type '[string, number]'.
+
+console.log(x[5].toString()); // Error, Property '5' does not exist on type '[string, number]'.
+
+
+
+
+
+
+
+/**
+ * Enum #
+ * A helpful addition to the standard set of datatypes 
+ * from JavaScript is the enum. As in languages like C#, 
+ * an enum is a way of giving more friendly names to sets 
+ * of numeric values.
+*/
+enum Color {Red='red', Green='green', Blue='blue'}
+let c: Color = Color.Green;
+console.log(c) // green
+c = Color.Blue
+console.log(c) // blue
+c = 'orange'
+
+ 
+enum ColorIndex {Red, Green, Blue}
+let d: ColorIndex = ColorIndex.Green;
+console.log(d) // 1
+d = ColorIndex.Blue
+console.log(d) // 2
+
+
+
+
+/**
+ * Any #
+ * We may need to describe the type of variables that we do not 
+ * know when we are writing an application. These values may come 
+ * from dynamic content, e.g. from the user or a 3rd party library. 
+ * In these cases, we want to opt-out of type checking and let the 
+ * values pass through compile-time checks. To do so, we label these 
+ * with the any type:
+ */
+let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false;
+notSure = ['uno', 'talks']
+
+/*
+The any type is also handy if you know some part of the type, 
+but perhaps not all of it. For example, you may have an array 
+but the array has a mix of different types:
+*/
+let listAny: any[] = [1, true, "free"];
+listAny[1] = 100;
+listAny[2] = listAny
+listAny = 'No List'
+
+
+/**
+ * Void #
+ * void is a little like the opposite of any: the absence of having 
+ * any type at all. You may commonly see this as the return type of 
+ * functions that do not return a value:
+*/
+function warnUser(): void {
+    console.log("This is my warning message");
+}
+
+
+
+
+
+/**
+ * Null and Undefined #
+ * In TypeScript, both undefined and null actually have their own 
+ * types named undefined and null respectively. Much like void, 
+ * they’re not extremely useful on their own:
+ */
+// Not much else we can assign to these variables!
+let u: undefined = undefined;
+u = 1
+let n: null = null;
+n = 'Null'
+
+
+/**
+ * Object #
+ * object is a type that represents the non-primitive type, i.e. 
+ * anything that is not number, string, boolean, bigint, symbol, 
+ * null, or undefined.
+ * With object type, APIs like Object.create can be better represented. 
+ * For example:
+ */
+declare function create(o: object | null): void;
+
+create({ prop: 0 }); // OK
+create(null); // OK
+
+create(42); // Error
+create("string"); // Error
+create(false); // Error
+create(undefined); // Error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
